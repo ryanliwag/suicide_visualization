@@ -8,10 +8,13 @@
     "info": "echo 'npm as a build tool'",
     "prep": "mkdir dist && npm install budo -g",
     "start": "budo main.js:dist/bundle.js --live --host localhost"
-  },  
+  },
   "keywords": [
     "d3"
   ],
   "author": "Ryan Liwag",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "budo": "^11.6.2"
+  }
 }

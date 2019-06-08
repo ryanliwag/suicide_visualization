@@ -79,8 +79,10 @@ d3.csv("/data/suicide.csv").then(function(data) {
 */
 
     var i = 0, dataset, mode;
+    $("#year_id").html("<strong>" + suicideByCountrynDate[0].key + "</strong>");
     function update(){
-
+        
+        
         var selected = $('#data-dropdown option:selected');
         var json_length = Object.keys(suicideByCountrynDate).length - 1;
 
@@ -90,6 +92,7 @@ d3.csv("/data/suicide.csv").then(function(data) {
         }
         else if (selected.val() == "perpop"){
             dataset = suicideByCountrynDate[i].values.slice().sort(function(a,b){return b.value.suicidesper - a.value.suicidesper;}).slice(0,30).reverse()
+            
             mode = "suicidesper"
         }
 
@@ -100,6 +103,7 @@ d3.csv("/data/suicide.csv").then(function(data) {
             update_charts(dataset, 1000, mode);
         }
         i += 1
+        $("#year_id").html("<strong>" + suicideByCountrynDate[i].key + "</strong>");
     };
 
     // random number function
@@ -110,6 +114,13 @@ d3.csv("/data/suicide.csv").then(function(data) {
     d3.interval(update, 3000);
 
     function update_charts(data_, speed, mode){
+
+        
+
+        var color  = d3.scaleLinear().domain([1,d3.max(data_.map(function(d){return d.value[mode]}))])
+                        .interpolate(d3.interpolateHcl)
+                        .range([d3.rgb("#007AFF"), d3.rgb('#ff0505')]);
+
 
         x_bar.domain([0, d3.max(data_.map(function(d){return d.value[mode]}))]).nice()
         g.select(".x")
@@ -141,7 +152,8 @@ d3.csv("/data/suicide.csv").then(function(data) {
          .duration(speed)
          .delay(function(d, i) { return i * 50; })
          .attr("y",  d => { return y_bar(d.key); })
-         .attr("width",  d => { return  x_bar(d.value[mode]); });
+         .attr("width",  d => {return  x_bar(d.value[mode]); })
+         .attr("fill",  d => {return color(d.value[mode])});
 
     }
 
