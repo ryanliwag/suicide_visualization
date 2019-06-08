@@ -1,0 +1,75 @@
+<!doctype html>
+<meta charset="utf-8">
+
+<head>
+    <title>Visualization of Suicides</title>
+</head>
+
+<script src="//d3js.org/d3.v5.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+<link rel="stylesheet" href="//cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+<link rel="stylesheet" href="//cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+
+<style>
+    .container {
+        max-width:100%;   
+    }
+    #tooltip {
+      position: absolute;
+      width: 200px;
+      height: auto;
+      padding: 10px;
+      background-color: white;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+      -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+      box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+    }
+
+    #tooltip.hidden {
+      display: none;
+    }
+
+    #tooltip p {
+      margin: 0;
+      font-family: Futura;
+      font-size: 16px;
+      line-height: 20px;
+    }
+</style>
+
+<header class="header">
+    <h1>Visualizations of Suicides from 1986-2016</h1>
+</header>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="column column-25">
+                <select id="data-dropdown">
+                        <option value="total">Total Suicides</option>
+                        <option value="perpop">Suicide per 100k</option>
+                        <option value="aggregated">Aggregated Suicides</option>
+                </select>
+                <button class="play-btn">Play/Pause</button>
+            </div>
+            
+        </div>
+        <div class="row" id="barchart" style="width:90vw; height:80vh">
+            <svg id="bar-chart"></svg>
+        </div>       
+    </div>
+
+    <footer class="footer">
+        <section class="container">
+            <p>Designed with D3 by <a target="_blank">Ryan Liwag</a>. Licensed under the <a target="_blank" title="MIT License">MIT License</a>.</p>
+        </section>
+    </footer>
+</body>
+
+<script src="dist/bundle.js"></script>

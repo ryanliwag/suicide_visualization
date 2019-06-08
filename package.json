@@ -1,0 +1,17 @@
+{
+  "name": "d3-suicide",
+  "version": "1.0.0",
+  "description": "D3 Force Graph showcase of the suicide Dataset",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "info": "echo 'npm as a build tool'",
+    "prep": "mkdir dist && npm install budo -g",
+    "start": "budo main.js:dist/bundle.js --live --host localhost"
+  },  
+  "keywords": [
+    "d3"
+  ],
+  "author": "Ryan Liwag",
+  "license": "ISC"
+}
