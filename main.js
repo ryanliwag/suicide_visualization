@@ -15,7 +15,7 @@ function sort_data(data) {
     return sorted
 };
 
-d3.csv("/data/suicide.csv").then(function (data) {
+d3.csv("data/suicide.csv").then(function (data) {
     var suicideByCountrynDate = d3.nest()
         .key(function (d) {
             return d.year;
@@ -82,7 +82,6 @@ d3.csv("/data/suicide.csv").then(function (data) {
 
         var selected = $('#data-dropdown option:selected');
         var json_length = Object.keys(suicideByCountrynDate).length - 1;
-        console.log(suicideByCountrynDate)
         if (selected.val() == "total") {
             dataset = suicideByCountrynDate[i].values.slice().sort(function (a, b) {
                 return b.value.suicides - a.value.suicides;
