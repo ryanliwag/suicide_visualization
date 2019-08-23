@@ -41,12 +41,20 @@
       font-size: 16px;
       line-height: 20px;
     }
+
+    h1{
+        padding-left: 3vw;
+    }
+
+    .container{
+        padding-left: 3vw;
+    }
+
 </style>
 
 <header class="header">
-    <h1>Visualizations of Suicides from 1986-2016</h1>
+    <h1  style="font-size: 3vw">Suicides <span id="year_id"><span></h1> 
 </header>
-
 <body>
     <div class="container">
         <div class="row">
@@ -54,26 +62,17 @@
                 <select id="data-dropdown">
                         <option value="total">Total Suicides</option>
                         <option value="perpop">Suicide per 100k</option>
-                        <option value="aggregated">Aggregated Suicides</option>
                 </select>
-                <h4>Year: <span id="year_id"><span></h4>
             </div>
-            <div class="column column-25">
-                
-                <button class="play-btn">Play/Pause</button>
-            </div>
-            
         </div>
         <div class="row" id="barchart" style="width:90vw; height:80vh">
             <svg id="bar-chart"></svg>
         </div>       
     </div>
-
     <footer class="footer">
         <section class="container">
-            <p>Designed with D3 by <a target="_blank">Ryan Liwag</a>. Licensed under the <a target="_blank" title="MIT License">MIT License</a>.</p>
         </section>
     </footer>
 </body>
 
-<script src="dist/bundle.js"></script>
+<script src="main.js"></script>
